@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '@/views/login'
+import Login from '@/views/login' // 登录组件
+import Home from '@/views/home' // 主页组件
 Vue.use(VueRouter)
 
 const routes = [
@@ -13,6 +14,11 @@ const routes = [
     component: Login,
     name: 'login'
 
+  },
+  {
+    path: '/home',
+    component: Home,
+    name: 'home'
   }
 ]
 
