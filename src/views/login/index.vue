@@ -1,8 +1,8 @@
 <template>
   <div class="wrap" ref="bgi">
     <!-- 用ui框架设置登录页面 -->
-    <el-button class="btn a" plain @click="open1">换肤</el-button>
-    <el-button class="btn b" plain @click="open2">还原</el-button>
+    <el-button class="btn a" plain @click="open1"> &lt; </el-button>
+    <el-button class="btn b" plain @click="open2"> &gt; </el-button>
 
     <el-card class="box-card">
       <div slot="header" class="clearfix">
@@ -53,7 +53,7 @@ export default {
     login (b) {
       // 验证通过会进入then中 之后发送请求 判断输入
       this.$refs[b].validate().then(() => {
-        this.$axios({
+        return this.$axios({
           url: '/authorizations', // 请求地址
           // params: {}  // get 请求行的参数
           data: this.loginFormData,
@@ -64,15 +64,15 @@ export default {
           window.localStorage.setItem('user-token', res.data.data.token)
           // 然后跳转主页
           this.$router.push('/home')
-        }).catch(() => {
-          // alert('密码错误')
-          this.$message({
-            message: '请你输入正确的密码',
-            type: 'error',
-            duration: '2000',
-            center: true,
-            showClose: true
-          })
+        })
+      }).catch(() => {
+        // alert('密码错误')
+        this.$message({
+          message: '请你输入正确的密码',
+          type: 'error',
+          duration: '2000',
+          center: true,
+          showClose: true
         })
       })
     }
@@ -84,7 +84,7 @@ export default {
         mobile: '',
         pwd: '',
         code: '',
-        checked: 'false'
+        checked: false
       },
       // 定义在验证规则  rilues:{'字段名':[规则1,规则2]}
       loginRules: {
