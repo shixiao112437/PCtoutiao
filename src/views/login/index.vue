@@ -53,7 +53,7 @@ export default {
     login (b) {
       // 验证通过会进入then中 之后发送请求 判断输入
       this.$refs[b].validate().then(() => {
-        return this.$axios({
+        this.$axios({
           url: '/authorizations', // 请求地址
           // params: {}  // get 请求行的参数
           data: this.loginFormData,
@@ -61,18 +61,18 @@ export default {
         }).then(res => {
           console.log(res.data)
           // 获取token 存起来
-          window.localStorage.setItem('user-token', res.data.data.token)
+          window.localStorage.setItem('user-token', res.data.token)
           // 然后跳转主页
           this.$router.push('/home')
-        })
-      }).catch(() => {
+        }).catch(() => {
         // alert('密码错误')
-        this.$message({
-          message: '请你输入正确的密码',
-          type: 'error',
-          duration: '2000',
-          center: true,
-          showClose: true
+          this.$message({
+            message: '请你输入正确的密码',
+            type: 'error',
+            duration: '2000',
+            center: true,
+            showClose: true
+          })
         })
       })
     }

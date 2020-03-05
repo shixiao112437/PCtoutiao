@@ -9,7 +9,7 @@
     <!-- 右边 -->
     <el-col :span="12" style="margin:0;padding:0;">
       <el-row type="flex" justify="space-around" align="bottom">
-        <input icon="el-icon-search" type="text" placeholder="请输入搜索的文章内容" />
+        <el-input v-model="searchComment" style="width:200px" prefix-icon="el-icon-search" size="mini"  type="text" placeholder="请输入搜索的文章内容" />
         <span>消息</span>
         <!-- 用户头像 -->
         <img style="width:40px;height:40px; border-radius:50%;" :src="userInfo.photo" alt />
@@ -61,14 +61,16 @@ export default {
     }).then(res => {
       console.log(res)
       if (res.status === 200) {
-        this.userInfo = res.data.data
+        this.userInfo = res.data
       }
+      this.userInfo = res.data
     })
   },
   data () {
     return {
       // 用户的基本信息
-      userInfo: {}
+      userInfo: {},
+      searchComment: ''
     }
   }
 }

@@ -7,7 +7,7 @@
       <img src="../assets/img/toutiao.png" alt />
       <h1>黑马程序员</h1>
     </div>
-    <el-menu-item>
+    <el-menu-item index="/home">
       <i class="el-icon-menu"></i>
       <span>首页</span>
     </el-menu-item>
