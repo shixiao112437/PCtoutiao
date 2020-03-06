@@ -51,7 +51,7 @@ export default {}
 .right {
   width: 300px;
   background-color: #323745;
-  height: 100vh;
+  min-height: 100vh;
   .logo {
     height: 60px;
     display: flex;

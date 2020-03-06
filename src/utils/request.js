@@ -1,6 +1,7 @@
 import axios from 'axios'
 import router from '@/router' // 路由实例对象
-
+import JSONBig from 'json-bigint'
+// 先格式化在拦截
 axios.defaults.baseURL = 'http://ttapi.research.itcast.cn/mp/v1_0'
 // axios的拦截语法中参数是两个函数 第一个成功时执行 第二个失败时执行
 // config 是请求信息
@@ -13,7 +14,7 @@ axios.interceptors.request.use(function (config) {
 }, function (error) {
   return Promise.reject(error) // 失败时reject(error)会直接进入axios catch中
 })
-
+// 响应拦截
 axios.interceptors.response.use(function (response) {
   return response.data ? response.data : {}
 }, function (error) {
@@ -27,5 +28,19 @@ axios.interceptors.response.use(function (response) {
   }
   return Promise.reject(error)
 })
+// transformRequest:[function(){return}] 允许在向服务器发送请求前修改请求数据   只能用在 put post patch 请求方法中
+// 后面的函数必须返回字符串  /ArrayBuffer   /Stream
+// axios.defaults.transformRequest = [function (data) {
+//   // 可以修改数据
+//   return data
+// }]
 
+// transformResponse 是在传递给 then/catch 之前 允许修改相应的数据
+axios.defaults.transformResponse = [function (data) {
+  // json-bigint可以转化一些比较大的数字(超过2的53次方)
+  // console.log('id', JSONBig.parse(data))
+  // console.log('id', JSONBig.parse(data))
+
+  return data ? JSONBig.parse(data) : {}
+}]
 export default axios

@@ -32,5 +32,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
+.right{
+  background-color: #323745
+}
 </style>
