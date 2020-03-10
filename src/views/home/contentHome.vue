@@ -28,7 +28,7 @@ export default {
     return {
       bgIndex: 0,
       bgImgList: [
-        'http://img5.imgtn.bdimg.com/it/u=2663733280,1070977591&fm=26&gp=0.jpg',
+        'http://img1.imgtn.bdimg.com/it/u=3306367262,1797207147&fm=26&gp=0.jpg',
         'http://img2.imgtn.bdimg.com/it/u=683581252,3654367472&fm=26&gp=0.jpg',
         'http://img0.imgtn.bdimg.com/it/u=3653273060,2980461482&fm=26&gp=0.jpg',
         'http://img0.imgtn.bdimg.com/it/u=3416298593,1460946041&fm=26&gp=0.jpg'

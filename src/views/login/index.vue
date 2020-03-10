@@ -89,15 +89,16 @@ export default {
       // 定义在验证规则  rilues:{'字段名':[规则1,规则2]}
       loginRules: {
         // 手机号格式
-        mobile: [{ required: true, message: '手机号不能为空' }, // 规则1内容不能为空,
-          { pattern: /1[3-9]\d{9}$/, message: '你输入的手机号位数不对' }
+        mobile: [{ required: true, message: '手机号不能为空', trigger: 'blur' }, // 规则1内容不能为空,
+          { pattern: /1[3-9]\d{9}$/, message: '你输入的手机号位数不对', trigger: 'blur' }
         ],
         // 密码格式
         pwd: [{ required: false }],
         // 验证码格式
-        code: [{ required: true, message: '验证码输入错误' }, {
+        code: [{ required: true, message: '验证码输入错误', trigger: 'blur' }, {
           pattern: /\d{6}$/,
-          message: '验证码格式不对'
+          message: '验证码格式不对',
+          trigger: 'blur'
         }],
         // 是否勾选条款
         checked: [{

@@ -30,7 +30,7 @@ const routes = [
         component: contentHome
       },
       {
-        path: '/home/publish',
+        path: '/home/publish/:id?',
         component: addArtic
       },
       {
@@ -44,6 +44,10 @@ const routes = [
       {
         path: '/home/material',
         component: material
+      },
+      {
+        path: 'userInfo',
+        component: () => import('@/views/home/userinfo')
       }
     ]
   }
