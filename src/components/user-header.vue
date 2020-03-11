@@ -3,7 +3,7 @@
   <el-row class="top" type="flse" align="miidle" style="padding:0;">
     <!-- 左边 -->
     <el-col class="right" :span="12">
-      <i class="el-icon-s-fold"></i> &nbsp; &nbsp;&nbsp;
+      <i @click="changeIcon" :class="iconClass? 'el-icon-s-fold':'el-icon-s-unfold'"></i> &nbsp; &nbsp;&nbsp;
       <span>江苏传智播客教育科技股份有限公司</span>
     </el-col>
     <!-- 右边 -->
@@ -31,8 +31,15 @@
 </template>
 
 <script>
+import eventBus from '@/utils/eventBus'
 export default {
   methods: {
+    // 点击图片 切换图标
+    changeIcon () {
+      this.iconClass = !this.iconClass
+      // 触发自定义事件
+      eventBus.$emit('fold')
+    },
     // 指令事件 commant 表示菜单项的command属性
     userAction (commant) {
       if (commant === 'info') {
@@ -46,31 +53,35 @@ export default {
         localStorage.removeItem('user-token')
         this.$router.push('/login')
       }
+    },
+    getInfo () {
+      // const token = window.localStorage.getItem('user-token')
+      this.$axios({
+        url: '/user/profile',
+        method: 'get'
+        /*        headers: {
+          Authorization: `Bearer ${token}`
+        } */ // 在请求拦截出已经设置了token
+      }).then(res => {
+        this.userInfo = res.data
+      })
     }
   },
   created () {
     // 页面刚加载时发送请求获取用户的信息并选在页面
     // 获取token
-    const token = window.localStorage.getItem('user-token')
-    this.$axios({
-      url: '/user/profile',
-      method: 'get',
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }).then(res => {
-      console.log(res)
-      if (res.status === 200) {
-        this.userInfo = res.data
-      }
-      this.userInfo = res.data
+    this.getInfo()
+    eventBus.$on('update', () => {
+      // alert(1)
+      this.getInfo()
     })
   },
   data () {
     return {
       // 用户的基本信息
       userInfo: {},
-      searchComment: ''
+      searchComment: '',
+      iconClass: true
     }
   }
 }

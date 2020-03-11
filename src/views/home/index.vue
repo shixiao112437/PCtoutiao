@@ -1,8 +1,8 @@
 <template>
   <el-container>
-   <el-aside class="right">
+   <el-aside :style="{width: fold?'50px':'300px'}" style="transition:all 0.5s;background-color:#323745">
       <!-- 放侧导航 -->
-      <asidenav></asidenav>
+      <asidenav :fold='fold'></asidenav>
    </el-aside>
 
    <el-container>
@@ -22,17 +22,28 @@
 <script>
 import asidenav from '@/components/aside-nav.vue' // 引入导航模块
 import userheader from '@/components/user-header.vue' // 引入导航模块
+import eventBus from '@/utils/eventBus'
+
 export default {
   components: {
     asidenav,
     userheader
+  },
+  data () {
+    return {
+      fold: false // 记录是否折叠
+    }
+  },
+  created () {
+    eventBus.$on('fold', () => {
+      // alert(1)
+      this.fold = !this.fold
+    })
   }
 
 }
 </script>
 
 <style lang="less" scoped>
-.right{
-  background-color: #323745
-}
+
 </style>

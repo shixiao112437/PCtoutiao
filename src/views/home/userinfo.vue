@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import eventBus from '@/utils/eventBus'
 export default {
   data () {
     return {
@@ -72,6 +73,8 @@ export default {
         // console.log(res)
         // this.userData = res.data
         this.$message.success('保存成功')
+        // 触发一个自定义事件
+        eventBus.$emit('update')
       }).catch(() => {
         this.$message.error('保存失败')
       })
@@ -85,6 +88,7 @@ export default {
         data
       }).then(res => {
         this.userData.photo = res.data.photo
+        eventBus.$emit('update')
       })
     }
 

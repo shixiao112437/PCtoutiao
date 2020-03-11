@@ -48,7 +48,20 @@ const routes = [
       {
         path: 'userInfo',
         component: () => import('@/views/home/userinfo')
+      },
+      {
+        path: 'echarts',
+        component: () => import('@/views/home/echarts')
+      },
+      {
+        path: 'canvas',
+        component: () => import('@/views/home/canvas')
+      },
+      {
+        path: '*',
+        component: () => import('@/views/home/404')
       }
+
     ]
   }
 ]

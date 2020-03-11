@@ -5,7 +5,7 @@
     <!-- logo部分 -->
     <div class="logo">
       <img src="../assets/img/toutiao.png" alt />
-      <h1>黑马程序员</h1>
+      <h1 v-if="!fold">黑马程序员</h1>
     </div>
     <el-menu-item index="/home">
       <i class="el-icon-menu"></i>
@@ -31,10 +31,10 @@
         <i class="el-icon-star-off"></i>
         <span>粉丝管理</span>
       </template>
-    <el-menu-item>图文数据</el-menu-item>
-    <el-menu-item>粉丝概况</el-menu-item>
-    <el-menu-item>粉丝画像</el-menu-item>
-    <el-menu-item>粉丝列表</el-menu-item>
+    <el-menu-item index="/home/echarts">图文数据</el-menu-item>
+    <el-menu-item  index="/home/fansinfo">粉丝概况</el-menu-item>
+    <el-menu-item index="/home/canvas">粉丝画像</el-menu-item>
+    <el-menu-item index="/home/fans">粉丝列表</el-menu-item>
     </el-submenu>
 
     <el-menu-item index="/home/userInfo">
@@ -45,12 +45,14 @@
 </template>
 
 <script>
-export default {}
+export default {
+  props: ['fold']
+}
 </script>
 
 <style lang='less' scoped>
 .right {
-  width: 300px;
+  // width: 300px;
   background-color: #323745;
   min-height: 100vh;
   .logo {
