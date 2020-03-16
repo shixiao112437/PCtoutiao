@@ -28,16 +28,16 @@ export default {
     return {
       bgIndex: 0,
       bgImgList: [
-        'http://img1.imgtn.bdimg.com/it/u=3306367262,1797207147&fm=26&gp=0.jpg',
-        'http://img2.imgtn.bdimg.com/it/u=683581252,3654367472&fm=26&gp=0.jpg',
-        'http://img0.imgtn.bdimg.com/it/u=3653273060,2980461482&fm=26&gp=0.jpg',
-        'http://img0.imgtn.bdimg.com/it/u=3416298593,1460946041&fm=26&gp=0.jpg'
+        require('../../assets/img/aa.jpg'),
+        require('../../assets/img/bb.jpg'),
+        require('../../assets/img/cc.jpg'),
+        require('../../assets/img/dd.jpg')
       ],
       slideImg: [
-        'http://img4.imgtn.bdimg.com/it/u=559529430,2149456864&fm=11&gp=0.jpg',
-        'http://img1.imgtn.bdimg.com/it/u=1529523085,2130368760&fm=26&gp=0.jpg',
-        'http://img2.imgtn.bdimg.com/it/u=60295700,1712385642&fm=11&gp=0.jpg',
-        'http://img3.imgtn.bdimg.com/it/u=2801288866,4253790105&fm=26&gp=0.jpg'
+        require('../../assets/img/a.jpg'),
+        require('../../assets/img/b.jpg'),
+        require('../../assets/img/c.jpg'),
+        require('../../assets/img/d.jpg')
       ]
     }
   },
@@ -70,7 +70,7 @@ export default {
   img {
     width: 100%;
     height: 100%;
-    opacity: 0.8;
+    opacity: 0.2;
   }
 
   h1 {
